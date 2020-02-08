@@ -1,4 +1,4 @@
-# Using the cloud to improve automated testing
+# Using the cloud to improve automated testing ![build status](https://github.com/jonscanzi/TaaS/workflows/build/badge.svg)
 
 TaaS stands for __Testing as a Service__. This project aims to offer some features that can be expected from software testing on the cloud. The main focus of this project is to offer infrastructure-scale testing that require multiple machines to be run. TaaS's main features include:
 
