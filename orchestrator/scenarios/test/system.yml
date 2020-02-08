@@ -1,0 +1,20 @@
+---
+    version: 1
+    provider: azure
+    
+    machines:
+    
+        - name: test
+          os_common: UbuntuLTS
+          config_template: test
+          role: test
+          override_config: {azure: Standard_D4s_v3}
+          auth:
+                  username: taasuser
+                  password: asdfgDDFjklqwe1234
+          remote_access: true
+    
+    options:
+            [
+                    full_network,
+            ]

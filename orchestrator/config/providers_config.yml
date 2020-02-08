@@ -1,0 +1,4 @@
+azure:
+  resource-group: proxy-TaaS
+  azure-cli-binary: az # Might need to be changed to absolute path for use in CI/CD environments with no PATH
+  location: westeurope # unused since provided by resource group

@@ -1,0 +1,29 @@
+[
+  {
+    name: test,
+    replacements:
+      {
+        'VM_NAME': 'test',
+        'user': 'taasuser',
+        'machine name': 'test',
+        'PASSWORD': 'taasuser',
+        'NAME': 'test',
+        'vm name': 'test',
+        'password': 'asdfgDDFjklqwe1234',
+        'name': 'test',
+        'vm_name': 'test',
+        'test': '23.97.155.28',
+        'username': 'taasuser',
+        'VM NAME': 'test',
+        'ORCHESTRATOR_IP': '104.47.139.27',
+        'machine_name': 'test',
+        'WEBSERVER_IP': '104.47.139.27',
+        'USER': 'taasuser',
+        'MACHINE NAME': 'test',
+        'USERNAME': 'taasuser',
+        'MACHINE_NAME': 'test',
+        'PASS': 'taasuser',
+        'pass': 'taasuser',
+      },
+  },
+]

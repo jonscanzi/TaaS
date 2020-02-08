@@ -1,0 +1,13 @@
+[Unit]
+Description=Orchestrator Webserver
+After=network.target
+
+[Service]
+Type=simple
+User=orch
+WorkingDirectory=/home/orch
+ExecStart=/home/orch/ws -t 32
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

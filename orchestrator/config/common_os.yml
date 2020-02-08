@@ -1,0 +1,5 @@
+UbuntuLTS:
+        azure: UbuntuLTS
+
+RHEL:
+        azure: RHEL

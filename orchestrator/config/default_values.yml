@@ -1,0 +1,18 @@
+# hardware values
+cpu_freq_mhz: 666
+cpu_cores: 8
+ram_gb: 64
+
+#disk, creating only one by default
+capacity_gb: 500
+type: ssd
+grade: 255
+
+#OS
+os_common: UbuntuLTS
+
+#Misc
+location: westeurope
+remote_access: false
+custom_script: "echo hello > /dev/null"
+config_template: ""
