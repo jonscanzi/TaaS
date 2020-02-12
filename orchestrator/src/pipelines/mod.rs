@@ -342,13 +342,22 @@ pub trait TaasPipeline {
         get_script.push_str(&format!("cd /home/{}\n", vm_username));
 
         for file in all_files {
-            get_script.push_str(&format!("wget http://{}:8000/{}/{}\n", ws_ip, vm_name, file.unwrap().file_name().to_str().unwrap()));
+            let filename = file.unwrap().file_name().to_str().unwrap().to_string();
+            match SHELL.download_tool.as_ref() {
+                "curl" => get_script.push_str(&format!("curl -o {} http://{}:8000/{}/{}\n", filename, ws_ip, vm_name, filename)),
+                "wget" => get_script.push_str(&format!("wget http://{}:8000/{}/{}\n", ws_ip, vm_name, filename)),
+                _ => panic!("Error: using unsupported download tool '', please use either curl or wget"),
+            }
         }
 
         match common_data {
             Some(cd) => {
                 for common_file in cd {
-                    get_script.push_str(&format!("wget http://{}:8000/common_data/{}\n", ws_ip, common_file));
+                    match SHELL.download_tool.as_ref() {
+                        "curl" => get_script.push_str(&format!("curl -o {} http://{}:8000/common_data/{}\n", common_file, ws_ip, common_file)),
+                        "wget" => get_script.push_str(&format!("wget http://{}:8000/common_data/{}\n", ws_ip, common_file)),
+                        _ => panic!("Error: using unsupported download tool '', please use either curl or wget"),
+                    }
                 }
             },
             None => (),

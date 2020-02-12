@@ -30,11 +30,20 @@ lazy_static! {
 pub struct ShellConfig {
 
     pub shell: String,
+    #[serde(default = "use_default_download_tool")]
+    pub download_tool: String,
+}
+
+fn use_default_download_tool() -> String {
+    "curl".to_string()
 }
 
 fn load_shell_config() -> ShellConfig {
     let sc: String = fs::read_to_string(paths::SHELL_CONFIG).expect(&format!("Error: could not find shell config file at {}", paths::SHELL_CONFIG));
     let sc: ShellConfig = serde_yaml::from_str(&sc).unwrap();
+    if !(sc.download_tool == "curl" || sc.download_tool == "wget") { // Only supports using either wget or curl
+        panic!("Error: in config/shell.yml make sure you select either curl or wget in the field 'download_tool'");
+    }
     sc
 }
 

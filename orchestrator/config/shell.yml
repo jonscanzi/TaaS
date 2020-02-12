@@ -1,1 +1,2 @@
 shell: bash
+download_tool: curl #can be curl or wget, pick one that is installed on the remote machines
