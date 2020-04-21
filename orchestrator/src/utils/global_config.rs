@@ -24,6 +24,14 @@ lazy_static! {
     pub static ref NETWORK: HashMap<String, String> = load_network_config();
     pub static ref SSH: SshConfig = load_ssh_config();
     pub static ref SHELL: ShellConfig = load_shell_config();
+    pub static ref WS_CONFIG: Option<HashMap<String, HashMap<String, String>>> = load_ws_config();
+}
+
+/// Workaround that allow users to select a specific VM type for the webserver, in case the automatic tool doesn't work for them
+fn load_ws_config() ->  Option<HashMap<String, HashMap<String, String>>> {
+    let wsc:  Option<HashMap<String, HashMap<String, String>>> = fs::read_to_string(paths::WS_CONFIG).ok()
+    .and_then({|wsc| serde_yaml::from_str(&wsc).ok()});
+    wsc
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -68,7 +76,6 @@ fn load_network_config() -> HashMap<String, String> {
     let nc: HashMap<String, String> = serde_yaml::from_str(&nc).unwrap();
     nc
 }
-
 
 /// Uses a special config file, defined as paths::PROVIDER to retrieve the cloud provider chosen by the user
 /// This step allows to simplify other config data structures

@@ -1,0 +1,2 @@
+override_vm:
+        azure: Standard_B1s
